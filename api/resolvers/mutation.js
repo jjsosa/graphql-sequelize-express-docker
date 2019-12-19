@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+
 async function createUser (root, { name, email, password }, { models }) {
     return models.user.create({
         name,

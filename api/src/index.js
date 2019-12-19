@@ -1,4 +1,5 @@
-const { ApolloServer, makeExecutableSchema } = require('apollo-server');
+const express = require('express');
+const { ApolloServer, makeExecutableSchema } = require('apollo-server-express');
 const resolvers = require('./resolvers');
 const models = require('../models');
 const { importSchema } = require('graphql-import');
@@ -15,8 +16,9 @@ const server = new ApolloServer({
   playground: true, // must be false in production
 });
 
-server
-  .listen()
-  .then(({ url, server }) => {
-    console.log(`Server is running on ${url}`);
-  });
+const app = express();
+server.applyMiddleware({ app });
+
+app.listen({ port: 4000 }, () =>
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+);
