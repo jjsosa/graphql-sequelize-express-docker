@@ -10,7 +10,7 @@ let db_user = process.env.DATABASE_USER;
 let db_passw = process.env.DATABASE_PASSW;
 let db_name = process.env.DATABASE_NAME;
 let db_host = process.env.DATABASE_HOST;
-// let db_port = process.env.DATABASE_PORT;
+let db_port = process.env.DATABASE_PORT;
 let db_dialect = process.env.DATABASE_DIALECT;
 
 let db_config = {
@@ -18,7 +18,7 @@ let db_config = {
   "password": db_passw,
   "database": db_name,
   "host": db_host,
-  // "port": db_port,
+  "port": db_port,
   "dialect": db_dialect
 }
 

@@ -1,14 +1,22 @@
-const { ApolloServer } = require('apollo-server');
-const typeDefs = require('./schema');
+const { ApolloServer, makeExecutableSchema } = require('apollo-server');
 const resolvers = require('./resolvers');
 const models = require('../models');
+const { importSchema } = require('graphql-import');
+const typeDefs = importSchema('./src/schema/schema.graphql');
+
+const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context: { models }
+  schema: schema,
+  context: ({ req }) => ({
+    ...req,
+    models
+  }),
+  playground: true, // must be false in production
 });
 
 server
   .listen()
-  .then(({ url }) => console.log('Server is running on localhost:4000'))
+  .then(({ url, server }) => {
+    console.log(`Server is running on ${url}`);
+  });
