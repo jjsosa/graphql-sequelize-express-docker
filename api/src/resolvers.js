@@ -11,8 +11,8 @@ const resolvers = {
         async recipe (root, { id }, { models }) {
               return models.recipe.findById(id);
         }
-      },
-      Mutation: {
+    },
+    Mutation: {
         async createUser (root, { name, email, password }, { models }) {
             return models.user.create({
                 name,
