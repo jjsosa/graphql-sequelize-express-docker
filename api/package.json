@@ -4,7 +4,8 @@
   "description": "GraphQL demo using Sequelize as ORM and MySQL for database",
   "main": "index.js",
   "scripts": {
-    "start": "DATABASE_USER=root DATABASE_PASSW=12345 DATABASE_NAME=graphqlexample DATABASE_HOST=graphql-database DATABASE_PORT=3306 DATABASE_DIALECT=mysql nodemon src/index.js",
+    "compose": "DATABASE_USER=root DATABASE_PASSW=12345 DATABASE_NAME=graphqlexample DATABASE_HOST=graphql-database DATABASE_PORT=3306 DATABASE_DIALECT=mysql nodemon src/index.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,8 +17,7 @@
     "graphql": "^14.5.8",
     "mysql2": "^2.0.2",
     "sequelize": "^5.21.3",
-    "sequelize-cli": "^5.5.1",
-    "sqlite3": "^4.1.1"
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
